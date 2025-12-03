@@ -1,7 +1,7 @@
 
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 
-export function AppHeader() {
+export function AppHeader({ }) {
 
     return (
         <header className="app-header full main-layout">
@@ -13,6 +13,7 @@ export function AppHeader() {
                         <NavLink to="/about">About Us</NavLink>
                         <NavLink to="/toy">Toys</NavLink>
                     </nav>
+
                 </div>
             </section>
         </header>

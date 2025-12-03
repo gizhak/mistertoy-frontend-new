@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom"
+import React from "react"
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
+import { ToyIndex } from "../pages/ToyIndex.jsx"
 
-export function ToyPreview({ toy }) {
+export function ToyPreview({ toy, onDeleteToy }) {
+
+    console.log('toy in ToyPreview:', onDeleteToy);
 
     return (
         <article>

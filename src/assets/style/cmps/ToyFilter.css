@@ -1,4 +1,19 @@
 .toy-filter {
     background-color: var(--clr2bg);
     padding: 1em;
+    border-radius: 8px;
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.toy-filter label {
+    margin-right: 0.5em;
+    font-weight: bold;
+}
+
+.toy-filter input[type="text"],
+.toy-filter input[type="checkbox"] {
+    margin-bottom: 0.5em;
 }

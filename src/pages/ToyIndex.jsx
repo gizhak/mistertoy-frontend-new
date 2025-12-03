@@ -1,10 +1,12 @@
 
 import { ToyList } from '../cmps/ToyList.jsx'
 import { toyService } from '../services/toy.service.js'
+import { Link } from 'react-router-dom'
+import { ToyFilter } from '../cmps/ToyFilter.jsx'
 
 import { use, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { loadToys } from '../store/actions/toy.actions.js'
+import { loadToys, removeToyOptimistic, saveToy } from '../store/actions/toy.actions.js'
 import { store } from '../store/store.js'
 
 
@@ -17,11 +19,43 @@ export function ToyIndex() {
         loadToys()
     }, [])
 
+    function onDeleteToy(toyId) {
+        console.log('Deleting toy with id:', toyId)
+        removeToyOptimistic(toyId)
+            .then(() => {
+                showSuccessMsg('Toy deleted')
+            })
+            .catch((err) => {
+                showErrorMsg('Cannot delete toy')
+            })
+    }
+
+    function onAddToy() {
+        const toyToAdd = toyService.getEmptyToy()
+        saveToy(toyToAdd)
+            .then(() => {
+                showSuccessMsg('Toy added')
+            })
+            .catch((err) => {
+                showErrorMsg('Cannot add toy')
+            })
+    }
+
 
     return (
-        <section className="toy-index">
-            <h1>Toy Index</h1>
-            <ToyList toys={toys} />
-        </section>
+        <div>
+            <main>
+                <Link className='toylink' to="/toy/edit">Add Toy</Link>
+                {/* <button onClick={onAddToy}>Add Toy</button> */}
+                <ToyFilter />
+                <section className="toy-index">
+                    {/* <h1>Toy Index</h1> */}
+                    <ToyList
+                        toys={toys}
+                        onDeleteToy={onDeleteToy}
+                    />
+                </section>
+            </main>
+        </div>
     )
 }
