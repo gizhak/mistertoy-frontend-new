@@ -49,6 +49,7 @@ export function saveToy(toy) {
         .then(savedToy => {
             console.log('savedToy:', savedToy)
             store.dispatch({ type, toy: savedToy })
+            showSuccessMsg('Toy saved successfully!')
             return savedToy
         })
         .catch(err => {

@@ -9,15 +9,16 @@ import { useSelector } from 'react-redux'
 import { loadToys, removeToyOptimistic, saveToy } from '../store/actions/toy.actions.js'
 import { store } from '../store/store.js'
 
-
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 
 
 export function ToyIndex() {
     const toys = useSelector((storeState) => storeState.toyModule.toys)
+    const filterBy = useSelector((storeState) => storeState.toyModule.filterBy)
 
     useEffect(() => {
         loadToys()
-    }, [])
+    }, [filterBy])
 
     function onDeleteToy(toyId) {
         console.log('Deleting toy with id:', toyId)

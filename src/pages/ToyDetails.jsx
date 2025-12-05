@@ -35,9 +35,9 @@ export function ToyDetails() {
             <h2>🧸</h2>
             <h2>Price: ${toy.price}</h2>
             <h2>Labels: {toy.labels.join(', ')}</h2>
-            <h2>{toy.inStock ? '✅ In Stock' : '❌ Out of Stock'}</h2>
+            <h3>{toy.inStock ? '✅ In Stock' : '❌ Out of Stock'}</h3>
 
-            <div>
+            <div className='toy-buttons'>
                 <Link to="/Toy">
                     <button>Back to List</button>
                 </Link>

@@ -6,11 +6,19 @@ export function ToyFilter({ filterBy, onSetFilter }) {
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
     onSetFilter = useRef(utilService.debounce(onSetFilter, 500))
 
+    console.log('filterByToEdit:', filterByToEdit);
 
     useEffect(() => {
         onSetFilter.current(filterByToEdit)
+        console.log('Filtering with:', filterByToEdit);
     }, [filterByToEdit])
 
+
+    function handleChange({ target }) {
+        let { name: fieldName, value, inStock } = target
+        console.log('fieldName, value:', fieldName, value, inStock)
+        setFilterByToEdit((prevFilter) => ({ ...prevFilter, [fieldName]: fieldName === 'inStock' ? inStock : value }))
+    }
 
 
     return (
@@ -23,12 +31,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     id="name"
                     name="name"
                     value={filterByToEdit.name}
-                    onChange={(ev) =>
-                        setFilterByToEdit({
-                            ...filterByToEdit,
-                            name: ev.target.value,
-                        })
-                    }
+                    onChange={handleChange}
                 />
 
                 <label htmlFor="labels">Labels</label>
@@ -37,12 +40,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     id="labels"
                     name="labels"
                     value={filterByToEdit.labels}
-                    onChange={(ev) =>
-                        setFilterByToEdit({
-                            ...filterByToEdit,
-                            labels: ev.target.value,
-                        })
-                    }
+                    onChange={handleChange}
                 />
                 <label htmlFor="inStock">In Stock</label>
                 <input
@@ -50,12 +48,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     id="inStock"
                     name="inStock"
                     checked={filterByToEdit.inStock}
-                    onChange={(ev) =>
-                        setFilterByToEdit({
-                            ...filterByToEdit,
-                            inStock: ev.target.checked,
-                        })
-                    }
+                    onChange={handleChange}
                 />
             </form>
         </section>

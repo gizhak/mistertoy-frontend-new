@@ -22,7 +22,7 @@
     font-size: 1em;
     text-decoration: none;
     color: #fff;
-    background-color: #007bff;
+    background-color: var(--clr2bg);
     padding: 0.5em 1em;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);

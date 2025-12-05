@@ -2,6 +2,7 @@
   margin: 0 auto;
   padding-left: 1.6rem;
   padding-right: 1.6rem;
+  /* background: linear-gradient(135deg, var(--clr2bg-light), var(--clr2bg)); */
 
 }
 
@@ -19,10 +20,14 @@
 } */
 
 footer {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: linear-gradient(135deg, var(--clr1bg-light), var(--clr1bg));
+  color: var(--gray3);
   padding: 1.5em;
   text-align: center;
-  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2); */
   font-weight: 600;
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);
+  border: 10px solid var(--gray2);
+  border-radius: 12px;
+  margin: 5px;
 }

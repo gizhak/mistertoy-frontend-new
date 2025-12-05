@@ -10,10 +10,15 @@
 } */
 
 .app-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+    background: linear-gradient(135deg, var(--clr1bg-light), var(--clr1bg));
+    color: var(--gray3);
     padding-block: 1.5em;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);
+    border: 10px solid var(--gray2);
+    border-radius: 12px;
+    margin: 5px;
+    text-align: center;
 }
 
 .app-header h1 {
@@ -29,7 +34,8 @@
 }
 
 .nav-nav a {
-    color: white;
+    color: var(--gray3);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     font-size: 1.1em;
     font-weight: 500;
     transition: all 0.3s ease;

@@ -11,6 +11,32 @@ body {
   min-height: 100vh;
 }
 
+form {
+  margin: 0.2em 0 0 2em;
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}
+
+label {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 0em;
+  font-weight: 500;
+  color: var(--gray3);
+  gap: 5px;
+}
+
+input {
+
+  font-family: 'Edu VIC WA NT Beginner', cursive;
+  font-size: 1em;
+  padding: 0.4em;
+  border: 2px solid var(--gray2);
+  border-radius: 6px;
+}
+
+
 h1,
 h2,
 h3,
@@ -31,7 +57,19 @@ a {
   color: unset;
 }
 
+.toy-details h1,
+h2,
+h3 {
+  color: var(--gray3);
+  font-weight: bold;
+  font-size: 200%;
+}
 
+.toy-details .toy-buttons {
+  margin-top: 5em;
+  /* display: flex; */
+  gap: 1em;
+}
 
 /* Dont stretch my Media */
 img,

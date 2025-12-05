@@ -4,10 +4,68 @@
 
 .toy-edit form {
     display: flex;
+    /* gap: 0.5em; */
     flex-direction: column;
     align-items: center;
+    font-size: large;
 
     input {
-        margin-bottom: 2em;
+        margin-bottom: 1.5em;
     }
 }
+
+.toy-edit .edit-container {
+    display: inline-flex;
+    gap: 1em;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* margin-bottom: 1.5em; */
+}
+
+.toy-edit .edit-container label {
+    /* margin-right: 0.5em; */
+    font-weight: bold;
+    margin-bottom: 1.5em;
+    /* margin-left: 10px; */
+}
+
+.label-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.toy-edit h2 {
+    margin-top: 25px;
+    margin-bottom: 80px;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.toy-edit .label-inStock {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 1.5em;
+}
+
+.inStock {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.checked {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 1.5em;
+}
+
+
+/* .label-inStock {
+    margin-right: 0.5em;
+    font-weight: 100px;
+} */
