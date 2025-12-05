@@ -36,12 +36,14 @@ export function ToyEdit() {
     // }
 
     function handleChange({ target }) {
-        let { value, type, name: field, inStock, labels } = target
-        console.log('field, value:', field, value, inStock, labels)
+        let { value, type, name: field, inStock, labels, imgUrl } = target
+        console.log('field, value:', field, value, inStock, labels, imgUrl)
         value = type === 'number' ? +value : value
         setToyToEdit((prevToy) => ({
             ...prevToy, [field]: value,
-            inStock: field === 'inStock' ? !prevToy.inStock : prevToy.inStock
+            inStock: field === 'inStock' ? !prevToy.inStock : prevToy.inStock,
+            labels: field === 'labels' ? value.split(',').map(label => label.trim()) : prevToy.labels,
+            // imgUrl: field === 'imgUrl' ? value.trim() : prevToy.imgUrl
         }))
         // setHasUnsavedChanges(true)
     }
@@ -93,6 +95,13 @@ export function ToyEdit() {
                         value={toyToEdit.labels}
                         onChange={handleChange}
                     />
+                    <label htmlFor="imgUrl" src="/img/pexels-cody-berg-463684.jpg">Image URL:</label>
+                    {/* <input type="text"
+                        id="imgUrl"
+                        name="imgUrl"
+                        value={toyToEdit.imgUrl}
+                        src="/img/pexels-cody-berg-463684.jpg"
+                    /> */}
                 </section>
                 <div className="label-container">
                     <label className="label-inStock" htmlFor="inStock">In Stock:</label>

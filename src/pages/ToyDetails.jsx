@@ -26,13 +26,13 @@ export function ToyDetails() {
 
     if (!toy) return <div>Loading...</div>
 
-    const { name, price, inStock } = toy
+    const { name, price, inStock, imgUrl } = toy
 
 
     return (
         <section className="toy-details">
             <h1>{toy.name}</h1>
-            <h2>🧸</h2>
+            <h2 className='image'><img src={imgUrl} alt={name} /></h2>
             <h2>Price: ${toy.price}</h2>
             <h2>Labels: {toy.labels.join(', ')}</h2>
             <h3>{toy.inStock ? '✅ In Stock' : '❌ Out of Stock'}</h3>

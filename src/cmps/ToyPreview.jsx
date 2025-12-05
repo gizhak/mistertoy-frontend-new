@@ -17,7 +17,7 @@ export function ToyPreview({ toy, onDeleteToy, onEditToy }) {
                 <div>
                     <Link to={`/toy/${toy._id}`}>
                         <h4>{toy.name}</h4>
-                        <h1>🧸</h1>
+                        <h1><img src={toy.imgUrl} /></h1>
                         <p>Price: <span>${toy.price}</span></p>
                         {toy.labels && toy.labels.length > 0 && (
                             <p>Labels: <span>{toy.labels}</span></p>

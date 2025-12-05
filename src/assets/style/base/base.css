@@ -71,6 +71,12 @@ h3 {
   gap: 1em;
 }
 
+.toy-details .image img {
+  width: 300px;
+  height: auto;
+  border-radius: 12px;
+}
+
 /* Dont stretch my Media */
 img,
 embed,

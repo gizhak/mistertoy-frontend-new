@@ -16,6 +16,8 @@ export function ToyIndex() {
     const toys = useSelector((storeState) => storeState.toyModule.toys)
     const filterBy = useSelector((storeState) => storeState.toyModule.filterBy)
 
+    console.log('toys in ToyIndex:', toys);
+
     useEffect(() => {
         loadToys()
     }, [filterBy])
