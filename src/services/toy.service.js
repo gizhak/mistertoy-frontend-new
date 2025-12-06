@@ -44,6 +44,21 @@ function query(filterBy = {}) {
                     filterBy.labels.every(label => toy.labels.includes(label))
                 )
             }
+            if (filterBy.sortBy) {
+                toys = toys.sort((a, b) => {
+                    if (filterBy.sortBy === 'name') {
+                        return a.name.localeCompare(b.name)
+                    }
+                    if (filterBy.sortBy === 'price') {
+                        return a.price - b.price
+                    }
+                    if (filterBy.sortBy === '-price') {
+                        return b.price - a.price
+                    }
+                    return 0
+
+                })
+            }
             return toys
         })
 }
@@ -89,7 +104,12 @@ function getRandomToy() {
 }
 
 function getDefaultFilter() {
-    return { txt: '', inStock: false, labels: [] }
+    return {
+        txt: '',
+        inStock: false,
+        labels: [],
+        sortBy: ''
+    }
 }
 
 function _createToys() {

@@ -63,6 +63,18 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                         </option>
                     ))}
                 </select>
+                <label htmlFor="sortBy">Sort By:</label>
+                <select
+                    id="sortBy"
+                    name="sortBy"
+                    value={filterByToEdit.sortBy}
+                    onChange={handleChange}
+                >
+                    <option value="">Select</option>
+                    <option value="name">Name</option>
+                    <option value="price">Price (Low to High) </option>
+                    <option value="price">Price (High to Low) </option>
+                </select>
                 <label htmlFor="inStock">In Stock</label>
                 <input
                     type="checkbox"
