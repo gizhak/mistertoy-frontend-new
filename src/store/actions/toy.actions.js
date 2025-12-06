@@ -59,5 +59,6 @@ export function saveToy(toy) {
 }
 
 export function setFilterBy(filterBy) {
+    console.log('Setting filterBy in store:', filterBy);
     store.dispatch({ type: SET_FILTER_BY, filterBy })
 }

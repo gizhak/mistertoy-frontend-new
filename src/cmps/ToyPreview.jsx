@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom"
 export function ToyPreview({ toy, onDeleteToy, onEditToy }) {
 
     // console.log('toy in ToyPreview:', onDeleteToy);
-    console.log('toy in ToyPreview:', toy);
+    // console.log('toy in ToyPreview:', toy);
     const navigate = useNavigate()
 
     return (

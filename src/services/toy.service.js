@@ -19,32 +19,30 @@ export const toyService = {
     getDefaultFilter
 }
 
-const labels = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle',
-    'Outdoor', 'Battery Powered']
+export const labels = [
+    'On wheels',
+    'Box game',
+    'Art',
+    'Baby',
+    'Doll',
+    'Puzzle',
+    'Outdoor',
+    'Battery Powered']
 
 function query(filterBy = {}) {
     return storageService.query(STORAGE_KEY)
         .then(toys => {
-            if (!filterBy.txt) filterBy.txt = ''
-            if (filterBy.inStock === undefined) filterBy.inStock = false
-            if (!filterBy.labels) filterBy.labels = []
-
-            // if (!filterBy.maxPrice) filterBy.maxPrice = Infinity
-            // if (!filterBy.minSpeed) filterBy.minSpeed = -Infinity
-            const regExp = new RegExp(filterBy.txt, 'i')
-
-            return toys.filter(toy =>
-                regExp.test(toy.name)
-            )
-        }).then(toys => {
-
-            if (filterBy.inStock) {
-                return toys.filter(toy => toy.inStock)
+            if (filterBy.txt) {
+                const txtRegExp = new RegExp(filterBy.txt, 'i')
+                toys = toys.filter(toy => txtRegExp.test(toy.name))
             }
-            return toys
-        }).then(toys => {
+            if (filterBy.inStock) {
+                toys = toys.filter(toy => toy.inStock)
+            }
             if (filterBy.labels && filterBy.labels.length) {
-                return toys.filter(toy => filterBy.labels.every(label => toy.labels.includes(label)))
+                toys = toys.filter(toy =>
+                    filterBy.labels.every(label => toy.labels.includes(label))
+                )
             }
             return toys
         })

@@ -1,23 +1,36 @@
 
 import { useState, useRef, useEffect } from "react"
 import { utilService } from "../services/util.service.js"
+import { labels } from "../services/toy.service.js"
 
 export function ToyFilter({ filterBy, onSetFilter }) {
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
-    onSetFilter = useRef(utilService.debounce(onSetFilter, 500))
+    const debouncedSetFilter = useRef(utilService.debounce(onSetFilter, 500)).current
 
-    console.log('filterByToEdit:', filterByToEdit);
+
+    // console.log('filterByToEdit:', filterByToEdit);
 
     useEffect(() => {
-        onSetFilter.current(filterByToEdit)
+        debouncedSetFilter(filterByToEdit)
         console.log('Filtering with:', filterByToEdit);
     }, [filterByToEdit])
 
 
     function handleChange({ target }) {
-        let { name: fieldName, value, inStock } = target
-        console.log('fieldName, value:', fieldName, value, inStock)
-        setFilterByToEdit((prevFilter) => ({ ...prevFilter, [fieldName]: fieldName === 'inStock' ? inStock : value }))
+        const { value, name: field, type } = target
+        let val = type === 'checkbox' ? target.checked : value
+
+        if (field === 'labels') {
+            val = value ? [value] : []
+        }
+
+        console.log('Updating filter field:', field, 'with value:', val);
+
+        setFilterByToEdit((prevFilter) => ({
+            ...prevFilter,
+            [field]: val
+        }))
+
     }
 
 
@@ -25,23 +38,31 @@ export function ToyFilter({ filterBy, onSetFilter }) {
         <section>
             <h2>Toy Filter</h2>
             <form >
-                <label htmlFor="name">Name:</label>
+                <label htmlFor="txt">Name:</label>
                 <input
                     type="text"
-                    id="name"
-                    name="name"
-                    value={filterByToEdit.name}
+                    id="txt"
+                    name="txt"
+                    value={filterByToEdit.txt}
                     onChange={handleChange}
                 />
-
                 <label htmlFor="labels">Labels</label>
-                <input
-                    type="text"
+                <select
                     id="labels"
                     name="labels"
-                    value={filterByToEdit.labels}
+                    value={filterByToEdit.labels[0] || ''}
                     onChange={handleChange}
-                />
+                >
+                    <option value="">All Labels</option>
+                    {labels.map((label) => (
+                        <option
+                            key={label}
+                            value={label}
+                        >
+                            {label}
+                        </option>
+                    ))}
+                </select>
                 <label htmlFor="inStock">In Stock</label>
                 <input
                     type="checkbox"
