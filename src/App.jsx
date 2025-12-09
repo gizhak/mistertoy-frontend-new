@@ -16,6 +16,7 @@ import { ToyIndex } from './pages/ToyIndex.jsx'
 import { store } from './store/store.js'
 import { ToyEdit } from './pages/ToyEdit.jsx'
 import { ToyDetails } from './pages/ToyDetails.jsx'
+import { ToyChart } from './cmps/ToyChart.jsx'
 // import { UserDetails } from './pages/UserDetails.jsx'
 import { Provider } from 'react-redux'
 
@@ -35,6 +36,8 @@ export default function App() {
               <Route element={<ToyEdit />} path="/Toy/edit" />
               <Route element={<ToyEdit />} path="/Toy/edit/:toyId" />
               <Route element={<ToyDetails />} path="/Toy/:toyId" />
+              <Route element={<ToyChart />} path="/chart" />
+
               {/* <Route element={<UserDetails />} path="/user/:userId" /> */}
             </Routes>
           </main>

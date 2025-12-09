@@ -10,6 +10,7 @@ import { loadToys, removeToyOptimistic, saveToy, setFilterBy } from '../store/ac
 import { store } from '../store/store.js'
 
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
+import { PopUp } from '../cmps/NicePopup.jsx'
 
 
 export function ToyIndex() {

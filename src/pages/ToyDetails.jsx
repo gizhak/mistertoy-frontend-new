@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { toyService } from '../services/toy.service.js'
+import { PopUp } from '../cmps/NicePopup.jsx'
+import { Chat } from '../cmps/Chat.jsx'
+
 
 export function ToyDetails() {
     const [toy, setToy] = useState(null)
+    const [isChatOpen, setIsChatOpen] = useState(false)
     const { toyId } = useParams()
     const params = useParams()
     console.log('params:', params)
@@ -44,6 +48,19 @@ export function ToyDetails() {
                 <Link to={`/Toy/edit/${toy._id}`}>
                     <button>Edit</button>
                 </Link>
+
+                <section>
+                    <button onClick={() => setIsChatOpen(true)}>Chat</button>
+                    <PopUp
+
+                        header={<h3>Chat About {toy.name}s</h3>}
+                        footer={<h4>&copy; 2025-9999 Toys INC.</h4>}
+                        onClose={() => setIsChatOpen(false)}
+                        isOpen={isChatOpen}
+                    >
+                        <Chat />
+                    </PopUp>
+                </section >
             </div>
         </section>
     )
