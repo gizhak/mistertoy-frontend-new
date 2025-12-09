@@ -85,6 +85,7 @@ function save(toy) {
 
 function getEmptyToy() {
     return {
+        // _id: utilService.makeId(),
         name: '',
         price: '',
         labels: [],
@@ -95,6 +96,7 @@ function getEmptyToy() {
 
 function getRandomToy() {
     return {
+        _id: utilService.makeId(),
         name: 'toy-' + (Date.now() % 1000),
         price: utilService.getRandomIntInclusive(50, 200),
         labels: ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle',

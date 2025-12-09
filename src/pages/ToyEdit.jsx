@@ -1,6 +1,6 @@
 
 import { toyService } from "../services/toy.service.js"
-import { useEffect, useState } from "react"
+import { use, useEffect, useState } from "react"
 import { useParams, Link, useNavigate } from "react-router-dom"
 import { saveToy } from "../store/actions/toy.actions.js"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
@@ -13,6 +13,10 @@ export function ToyEdit() {
 
     const param = useParams()
     console.log('param:', param)
+
+    const state = useState(toyService.getEmptyToy())
+    console.log('state:', state)
+
 
 
     useEffect(() => {
@@ -50,7 +54,7 @@ export function ToyEdit() {
 
     function onSaveToy(ev) {
         ev.preventDefault()
-        // if (!toyToEdit.name) toyToEdit.name = 'Unnamed Toy'
+        if (!toyToEdit.name) toyToEdit.name = 'Unnamed Toy'
         if (!toyToEdit.price) toyToEdit.price = 0
         // console.log('Saving toy:', toyToEdit)
         saveToy(toyToEdit)
