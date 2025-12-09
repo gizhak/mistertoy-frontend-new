@@ -46,6 +46,7 @@
 
 .chat-input-form {
     /* background-color: var(--gray1); */
+    /* color: black; */
     display: flex;
     gap: 10px;
 }
@@ -56,6 +57,12 @@
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+.userMessage {
+    color: black;
+    size: 2px;
+    font-family: 'Edu VIC WA NT Beginner', cursive;
 }
 
 .chat-input-form button {

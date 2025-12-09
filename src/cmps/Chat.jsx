@@ -54,7 +54,7 @@ export function Chat() {
             </div>
 
             <form onSubmit={handleSubmit} className="chat-input-form">
-                <input
+                <input className='userMessage'
                     type="text"
                     value={userInput}
                     onChange={(ev) => setUserInput(ev.target.value)}
