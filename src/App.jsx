@@ -17,8 +17,10 @@ import { store } from './store/store.js'
 import { ToyEdit } from './pages/ToyEdit.jsx'
 import { ToyDetails } from './pages/ToyDetails.jsx'
 import { ToyChart } from './cmps/ToyChart.jsx'
+
 // import { UserDetails } from './pages/UserDetails.jsx'
 import { Provider } from 'react-redux'
+import { MultiSelect } from './cmps/MultiSelect.jsx'
 
 
 export default function App() {
@@ -37,7 +39,7 @@ export default function App() {
               <Route element={<ToyEdit />} path="/Toy/edit/:toyId" />
               <Route element={<ToyDetails />} path="/Toy/:toyId" />
               <Route element={<ToyChart />} path="/chart" />
-
+              <Route element={<MultiSelect />} path="/multi-select" />
               {/* <Route element={<UserDetails />} path="/user/:userId" /> */}
             </Routes>
           </main>

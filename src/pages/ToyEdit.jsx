@@ -11,17 +11,12 @@ export function ToyEdit() {
     const [toyToEdit, setToyToEdit] = useState(toyService.getEmptyToy())
     const { toyId } = useParams()
 
-    const param = useParams()
-    console.log('param:', param)
-
-    const state = useState(toyService.getEmptyToy())
-    console.log('state:', state)
-
-
-
     useEffect(() => {
         if (toyId) loadToy()
     }, [])
+
+    // console.log('toyId in ToyEdit:', toyId)
+    // console.log('toyToEdit in ToyEdit:', toyToEdit)
 
     function loadToy() {
         toyService.getById(toyId)
@@ -56,15 +51,16 @@ export function ToyEdit() {
         ev.preventDefault()
         if (!toyToEdit.name) toyToEdit.name = 'Unnamed Toy'
         if (!toyToEdit.price) toyToEdit.price = 0
-        // console.log('Saving toy:', toyToEdit)
+        console.log('Saving toy:', toyToEdit)
         saveToy(toyToEdit)
-            // console.log('Toy saved:', toyToEdit)
             .then(() => {
                 showSuccessMsg('Toy saved successfully!')
                 console.log('Toy saved:', toyToEdit)
                 navigate('/Toy')
             })
+
             .catch(err => {
+                console.log('Toy saved:', toyToEdit)
                 console.log('Error saving toy:', err)
                 showErrorMsg('Cannot save toy!')
             })
@@ -74,7 +70,7 @@ export function ToyEdit() {
         <section className="toy-edit">
             {/* <h1>Toy Edit Page</h1> */}
             {/* <h2>name: {toyToEdit.name}</h2> */}
-            <h2>{toyToEdit._id ? 'Edit' : 'Add'} Toy</h2>
+            <h2>{toyId ? 'Edit' : 'Add'} Toy</h2>
 
             <form onSubmit={onSaveToy}>
                 <section className="edit-container">
@@ -121,7 +117,7 @@ export function ToyEdit() {
                 </section>
 
                 <div>
-                    <button >{toyToEdit._id ? 'Save' : 'Add'} </button>
+                    <button>{toyId ? 'Save' : 'Add'}</button>
                     <button onClick={() => navigate('/Toy')}>Back</button>
                 </div>
             </form>

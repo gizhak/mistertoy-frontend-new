@@ -13,6 +13,7 @@ export function AppHeader({ }) {
                         <NavLink to="/about">About Us</NavLink>
                         <NavLink to="/toy">Toys</NavLink>
                         <NavLink to="/chart">Toy Chart</NavLink>
+                        <NavLink to="/multi-select">Multi Select</NavLink>
                     </nav>
                 </div>
             </section>

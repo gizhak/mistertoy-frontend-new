@@ -13,7 +13,6 @@ export const userService = {
     getEmptyCredentials
 }
 
-
 function login({ username, password }) {
 
     return httpService.post(BASE_URL + 'login', { username, password })

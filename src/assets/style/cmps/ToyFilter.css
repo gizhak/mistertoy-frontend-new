@@ -1,19 +1,31 @@
 .toy-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+
     background-color: var(--clr2bg);
     padding: 1em;
     border-radius: 8px;
     margin-bottom: 1em;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em;
+
+    >label {
+        font-weight: bold;
+    }
+
+    >input[type="text"],
+    >input[type="checkbox"] {
+        margin-bottom: 0.5em;
+    }
+
+    >input[type="text"] {
+        max-width: 200px;
+        /* padding: 0.5em; */
+        border: 1px solid var(--clr4txt);
+        border-radius: 4px;
+    }
 }
 
-.toy-filter label {
+/* .toy-filter label {
     margin-right: 0.5em;
     font-weight: bold;
-}
-
-.toy-filter input[type="text"],
-.toy-filter input[type="checkbox"] {
-    margin-bottom: 0.5em;
-}
+} */

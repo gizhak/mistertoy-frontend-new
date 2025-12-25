@@ -2,6 +2,7 @@
 import { useState, useRef, useEffect } from "react"
 import { utilService } from "../services/util.service.js"
 import { labels } from "../services/toy.service.js"
+import { MultiSelect } from "./MultiSelect.jsx"
 
 export function ToyFilter({ filterBy, onSetFilter }) {
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
@@ -21,7 +22,10 @@ export function ToyFilter({ filterBy, onSetFilter }) {
         let val = type === 'checkbox' ? target.checked : value
 
         if (field === 'labels') {
-            val = value ? [value] : []
+            const selectedOptions = Array.from(target.selectedOptions)
+            val = selectedOptions
+                .map(option => option.value)
+                .filter(value => value !== '')
         }
 
         console.log('Updating filter field:', field, 'with value:', val);
@@ -37,6 +41,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
     return (
         <section>
             <h2>Toy Filter</h2>
+            <button onClick={MultiSelect}> MultiSelect</button>
             <form >
                 <label htmlFor="txt">Name:</label>
                 <input
@@ -50,8 +55,10 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                 <select
                     id="labels"
                     name="labels"
-                    value={filterByToEdit.labels[0] || ''}
+                    value={filterByToEdit.labels}
                     onChange={handleChange}
+                    multiple
+                    size="5"
                 >
                     <option value="">All Labels</option>
                     {labels.map((label) => (
