@@ -9,14 +9,13 @@ export function AppHeader({ }) {
 
     const user = useSelector(storeState => storeState.userModule.loggedInUser)
 
-    function onLogout() {
-        logout()
-            .then(() => {
-                showSuccessMsg('logout successfully')
-            })
-            .catch((err) => {
-                showErrorMsg('OOPs try again')
-            })
+    async function onLogout() {
+        const result = await logout()
+        try {
+            showSuccessMsg('logout successfully')
+        } catch (err) {
+            showErrorMsg('OOPs try again')
+        }
     }
 
 

@@ -13,16 +13,22 @@ export function LoginSignup() {
         isSignup ? _signup(credentials) : _login(credentials)
     }
 
-    function _login(credentials) {
-        login(credentials)
-            .then(() => { showSuccessMsg('Logged in successfully') })
-            .catch((err) => { showErrorMsg('Missing credentials') })
+    async function _login(credentials) {
+        const result = await login(credentials)
+        try {
+            showSuccessMsg('Logged in successfully')
+        } catch (err) {
+            showErrorMsg('Missing credentials')
+        }
     }
 
-    function _signup(credentials) {
-        signup(credentials)
-            .then(() => { showSuccessMsg('Signed in successfully') })
-            .catch((err) => { showErrorMsg('Missing credentials') })
+    async function _signup(credentials) {
+        const result = await signup(credentials)
+        try {
+            showSuccessMsg('Signed in successfully')
+        } catch (err) {
+            showErrorMsg('Missing credentials')
+        }
     }
 
     return (
