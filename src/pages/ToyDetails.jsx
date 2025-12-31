@@ -18,12 +18,13 @@ export function ToyDetails() {
     }, [toyId])
     console.log('toyId:', toyId)
 
-    function loadToy() {
-        toyService.getById(toyId)
-            .then(toy => setToy(toy))
-            .catch(err => {
-                console.log('Error loading toy:', err)
-            })
+    async function loadToy() {
+        try {
+            const toy = await toyService.getById(toyId)
+            setToy(toy)
+        } catch (err) {
+            console.log('Error loading toy:', err)
+        }
     }
 
     // const { name, price, inStock } = toy

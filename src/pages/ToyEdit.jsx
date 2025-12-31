@@ -4,6 +4,7 @@ import { use, useEffect, useState } from "react"
 import { useParams, Link, useNavigate } from "react-router-dom"
 import { saveToy } from "../store/actions/toy.actions.js"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
+// import { isLoginUser } from '../cmps/ToyPreview.jsx'
 
 export function ToyEdit() {
 
@@ -115,11 +116,17 @@ export function ToyEdit() {
                 <section>
                     <div className="checked">{toyToEdit.inStock ? '✅ In Stock' : '❌ Out of Stock'}</div>
                 </section>
-
+                {/* {isLoginUser() &&
+                    <div>
+                        <button>{toyId ? 'Save' : 'Add'}</button>
+                        <button onClick={() => navigate('/Toy')}>Back</button>
+                    </div>
+                } */}
                 <div>
                     <button>{toyId ? 'Save' : 'Add'}</button>
                     <button onClick={() => navigate('/Toy')}>Back</button>
                 </div>
+
             </form>
         </section>
     )

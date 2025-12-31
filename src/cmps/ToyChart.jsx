@@ -52,6 +52,10 @@ export function ToyChart() {
 
     const options = {
         plugins: {
+            legend: {
+                display: true,
+                position: 'right',
+            },
             tooltip: {
                 callbacks: {
                     label: function (context) {

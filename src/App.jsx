@@ -7,6 +7,8 @@
 import './assets/style/main.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
+import { UserMsg } from './cmps/UserMsg.jsx'
+
 import { AppHeader } from './cmps/AppHeader.jsx'
 import { AppFooter } from './cmps/AppFooter.jsx'
 
@@ -42,6 +44,7 @@ export default function App() {
               <Route element={<MultiSelect />} path="/multi-select" />
               {/* <Route element={<UserDetails />} path="/user/:userId" /> */}
             </Routes>
+            <UserMsg />
           </main>
           <AppFooter />
         </section>

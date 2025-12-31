@@ -12,18 +12,25 @@
         font-weight: bold;
     }
 
-    >input[type="text"],
+    /* >input[type="text"], */
     >input[type="checkbox"] {
         margin-bottom: 0.5em;
     }
 
     >input[type="text"] {
-        max-width: 200px;
+        max-width: 100px;
         /* padding: 0.5em; */
         border: 1px solid var(--clr4txt);
         border-radius: 4px;
     }
 }
+
+.filter-select {
+    width: 160px;
+    height: 40px;
+    margin-top: 0px;
+}
+
 
 /* .toy-filter label {
     margin-right: 0.5em;

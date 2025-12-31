@@ -37,14 +37,24 @@ export function ToyFilter({ filterBy, onSetFilter }) {
 
     }
 
+    function renderLabelCheckboxes() {
+        const { value, checked } = target
+        setFilterByToEdit((prevFilter) => {
+            const newLabels = checked
+                ? [...prevFilter.labels, value]
+                : prevFilter.labels.filter(l => l !== value)
+            return { ...prevFilter, labels: newLabels }
+        })
+    }
+
 
     return (
         <section>
             <h2>Toy Filter</h2>
-            <button onClick={MultiSelect}> MultiSelect</button>
+            {/* <button onClick={MultiSelect}> MultiSelect</button> */}
             <form >
                 <label htmlFor="txt">Name:</label>
-                <input
+                <input className="filter-input"
                     type="text"
                     id="txt"
                     name="txt"
@@ -52,7 +62,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     onChange={handleChange}
                 />
                 <label htmlFor="labels">Labels</label>
-                <select
+                <select className="filter-select"
                     id="labels"
                     name="labels"
                     value={filterByToEdit.labels}
@@ -80,7 +90,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     <option value="">Select</option>
                     <option value="name">Name</option>
                     <option value="price">Price (Low to High) </option>
-                    <option value="price">Price (High to Low) </option>
+                    <option value="-price">Price (High to Low) </option>
                 </select>
                 <label htmlFor="inStock">In Stock</label>
                 <input

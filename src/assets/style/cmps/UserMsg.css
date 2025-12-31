@@ -15,6 +15,11 @@
 
 .user-msg.error {
     background-color: var(--clr2);
+
+}
+
+.user-msg text {
+    margin-right: 0.5em;
 }
 
 .user-msg button {

@@ -27,11 +27,15 @@ export const httpService = {
 async function ajax(endpoint, method = 'GET', data = null) {
     // console.log(`${BASE_URL}${endpoint}`)
     try {
+
         const res = await axios({
             url: `${BASE_URL}${endpoint}`,
             method,
             data,
-            params: (method === 'GET') ? data : null
+            params: (method === 'GET') ? data : null,
+            paramsSerializer: {
+                indexes: null  // זה גורם ל-axios לשלוח labels[]=value1&labels[]=value2
+            }
         })
 
         return res.data
