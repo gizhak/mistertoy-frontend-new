@@ -19,13 +19,14 @@ export function ToyEdit() {
     // console.log('toyId in ToyEdit:', toyId)
     // console.log('toyToEdit in ToyEdit:', toyToEdit)
 
-    function loadToy() {
-        toyService.getById(toyId)
-            .then(toy => setToyToEdit(toy))
-            .catch(err => {
-                console.log('Error loading toy:', err)
-                navigate('/Toy')
-            })
+    async function loadToy() {
+        try {
+            const toy = await toyService.getById(toyId)
+            setToyToEdit(toy)
+        } catch (err) {
+            console.log('Error loading toy:', err)
+            navigate('/Toy')
+        }
     }
 
     // function handleChange({ target }) {
@@ -48,24 +49,44 @@ export function ToyEdit() {
         // setHasUnsavedChanges(true)
     }
 
-    function onSaveToy(ev) {
+    async function onSaveToy(ev) {
         ev.preventDefault()
         if (!toyToEdit.name) toyToEdit.name = 'Unnamed Toy'
         if (!toyToEdit.price) toyToEdit.price = 0
         console.log('Saving toy:', toyToEdit)
-        saveToy(toyToEdit)
-            .then(() => {
-                showSuccessMsg('Toy saved successfully!')
-                console.log('Toy saved:', toyToEdit)
-                navigate('/Toy')
-            })
+        const savedToy = await saveToy(toyToEdit)
+        try {
+            await savedToy
+            showSuccessMsg('Toy saved successfully!')
+            console.log('Toy saved:', toyToEdit)
+            navigate('/Toy')
+        } catch (err) {
+            console.log('Toy saved:', toyToEdit)
+            console.log('Error saving toy:', err)
+            showErrorMsg('Cannot save toy!')
+        }
 
-            .catch(err => {
-                console.log('Toy saved:', toyToEdit)
-                console.log('Error saving toy:', err)
-                showErrorMsg('Cannot save toy!')
-            })
     }
+
+
+    //     function onSaveToy(ev) {
+    //     ev.preventDefault()
+    //     if (!toyToEdit.name) toyToEdit.name = 'Unnamed Toy'
+    //     if (!toyToEdit.price) toyToEdit.price = 0
+    //     console.log('Saving toy:', toyToEdit)
+    //     saveToy(toyToEdit)
+    //         .then(() => {
+    //             showSuccessMsg('Toy saved successfully!')
+    //             console.log('Toy saved:', toyToEdit)
+    //             navigate('/Toy')
+    //         })
+
+    //         .catch(err => {
+    //             console.log('Toy saved:', toyToEdit)
+    //             console.log('Error saving toy:', err)
+    //             showErrorMsg('Cannot save toy!')
+    //         })
+    // }
 
     return (
         <section className="toy-edit">

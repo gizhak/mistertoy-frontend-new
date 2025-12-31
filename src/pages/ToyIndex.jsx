@@ -27,26 +27,24 @@ export function ToyIndex() {
         // setFilterBy()
     }, [filterBy])
 
-    function onDeleteToy(toyId) {
+    async function onDeleteToy(toyId) {
         console.log('Deleting toy with id:', toyId)
-        removeToyOptimistic(toyId)
-            .then(() => {
-                showSuccessMsg('Toy deleted')
-            })
-            .catch((err) => {
-                showErrorMsg('Cannot delete toy')
-            })
+        const removedToy = await removeToyOptimistic(toyId)
+        try {
+            showSuccessMsg('Toy deleted')
+        } catch (err) {
+            showErrorMsg('Cannot delete toy')
+        }
     }
 
-    function onAddToy() {
+    async function onAddToy() {
         const toyToAdd = toyService.getEmptyToy()
-        saveToy(toyToAdd)
-            .then(() => {
-                showSuccessMsg('Toy added')
-            })
-            .catch((err) => {
-                showErrorMsg('Cannot add toy')
-            })
+        const savedToy = await saveToy(toyToAdd)
+        try {
+            showSuccessMsg('Toy added')
+        } catch (err) {
+            showErrorMsg('Cannot add toy')
+        }
     }
 
     function onSetFilter(filterBy) {
