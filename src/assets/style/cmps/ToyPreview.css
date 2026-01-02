@@ -26,9 +26,11 @@
     position: relative;
 }
 
-.toy-preview:hover {
-    transform: translateY(-10px) rotateX(5deg);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+.toy-preview:hover .scale-up-center {
+    /* transform: translateY(-10px) rotateX(5deg);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); */
+    -webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
 .toy-preview h4 {
@@ -87,5 +89,37 @@
 
 .toy-preview .actions button:hover {
     background-color: var(--clr2);
-    transform: scale(0.8);
+    transform: scale(0.2);
+    /* -webkit-animation: flip-diagonal-2-br 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+    animation: flip-diagonal-2-br 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both; */
+}
+
+/* .flip-diagonal-2-br {
+    -webkit-animation: flip-diagonal-2-br 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+    animation: flip-diagonal-2-br 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+} */
+
+
+@-webkit-keyframes scale-up-center {
+    0% {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@keyframes scale-up-center {
+    0% {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
 }

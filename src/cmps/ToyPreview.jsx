@@ -31,7 +31,7 @@ export function ToyPreview({ toy, onDeleteToy, onEditToy }) {
 
 
     return (
-        <article>
+        <article className="toy-preview rotate-hor-center">
             <section>
                 <div>
                     <Link
