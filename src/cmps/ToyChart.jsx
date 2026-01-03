@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
 import { loadToys } from '../store/actions/toy.actions.js';
+import { labels } from '../services/toy.service.js';
 
 
 
@@ -20,8 +21,13 @@ export function ToyChart() {
             })
     }, [])
 
-    const toyLabels = toys.map(toy => toy.labels)
+    const toyLabels = toys.map(toy => toy.labels.join(', '))
+
     const toyPrices = toys.map(toy => toy.price)
+
+    console.log('toyLabels:', toyLabels)
+    console.log('toyPrices:', toyPrices)
+
 
     const data = {
         labels: toyLabels,
