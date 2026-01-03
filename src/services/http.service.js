@@ -34,7 +34,7 @@ async function ajax(endpoint, method = 'GET', data = null) {
             data,
             params: (method === 'GET') ? data : null,
             paramsSerializer: {
-                indexes: null  // זה גורם ל-axios לשלוח labels[]=value1&labels[]=value2
+                indexes: null
             }
         })
 
