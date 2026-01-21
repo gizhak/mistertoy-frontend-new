@@ -19,6 +19,7 @@ import { store } from './store/store.js'
 import { ToyEdit } from './pages/ToyEdit.jsx'
 import { ToyDetails } from './pages/ToyDetails.jsx'
 import { ToyChart } from './cmps/ToyChart.jsx'
+import { PhotoGallery3D } from './pages/PhotoGallery3D.jsx'
 
 // import { UserDetails } from './pages/UserDetails.jsx'
 import { Provider } from 'react-redux'
@@ -42,6 +43,7 @@ export default function App() {
               <Route element={<ToyDetails />} path="/Toy/:toyId" />
               <Route element={<ToyChart />} path="/chart" />
               <Route element={<MultiSelect />} path="/multi-select" />
+              <Route element={<PhotoGallery3D />} path="/gallery" />
               {/* <Route element={<UserDetails />} path="/user/:userId" /> */}
             </Routes>
             <UserMsg />
