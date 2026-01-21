@@ -29,6 +29,7 @@ export function AppHeader({ }) {
                     <NavLink to="/toy">Toys</NavLink>
                     <NavLink to="/chart">Toy Chart</NavLink>
                     <NavLink to="/multi-select">Multi Select</NavLink>
+                    <NavLink to="/gallery">🎨 3D Gallery</NavLink>
                 </nav>
             </section>
 
